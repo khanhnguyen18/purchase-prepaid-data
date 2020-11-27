@@ -1,0 +1,36 @@
+@startuml
+node "purchase-bootstrap"
+
+package "Presentation" {
+  node "purchase-rest"
+}
+
+package "Domain" {
+  node "purchase-domain"
+}
+
+
+package "Application Service" {
+  node "purchase-application"
+}
+
+package "Infrastructrue" {
+  node "purchase-data-jpa"
+}
+
+database "H2" {
+
+}
+
+
+[purchase-bootstrap] --> [purchase-rest]
+[purchase-bootstrap] --> [purchase-data-jpa]
+
+[purchase-data-jpa] --> [purchase-domain]
+[purchase-application] --> [purchase-domain]
+
+[purchase-rest] --> [purchase-application]
+[purchase-data-jpa] -[dashed]->H2 : use
+
+
+@enduml
