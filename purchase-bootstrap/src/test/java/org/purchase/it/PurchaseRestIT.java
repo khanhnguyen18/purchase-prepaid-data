@@ -1,11 +1,14 @@
-package org.purchase;
+package org.purchase.it;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.jupiter.api.Test;
+import org.purchase.PurchaseApplication;
+import org.purchase.PurchaseApplicationLocal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
@@ -18,6 +21,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = {PurchaseApplication.class})
 @AutoConfigureMockMvc
 public class PurchaseRestIT {
+
+    @MockBean
+    PurchaseApplicationLocal purchaseApplicationLocal;
 
     @Autowired
     private MockMvc mockMvc;

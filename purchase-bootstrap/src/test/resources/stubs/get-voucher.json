@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/generate-code"
+  },
+  "response": {
+    "status": 200,
+    "body": "ABCXYZ",
+    "headers": {
+      "Content-Type": "text/plain"
+    }
+  }
+}

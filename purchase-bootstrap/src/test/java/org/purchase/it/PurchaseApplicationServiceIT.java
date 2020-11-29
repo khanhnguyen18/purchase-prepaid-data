@@ -1,11 +1,14 @@
-package org.purchase;
+package org.purchase.it;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.Test;
+import org.purchase.PurchaseApplication;
+import org.purchase.PurchaseApplicationLocal;
 import org.purchase.domain.entity.Purchase;
 import org.purchase.service.PurchaseApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -13,6 +16,9 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest(classes = {PurchaseApplication.class})
 public class PurchaseApplicationServiceIT {
+
+    @MockBean
+    PurchaseApplicationLocal purchaseApplicationLocal;
 
     @Autowired
     private PurchaseApplicationService purchaseApplicationService;
