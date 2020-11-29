@@ -2,12 +2,13 @@ package org.purchase;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.Test;
+import org.purchase.domain.entity.Purchase;
 import org.purchase.service.PurchaseApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
 @SpringBootTest(classes = {PurchaseApplication.class})
@@ -27,9 +28,9 @@ public class PurchaseApplicationServiceIT {
                         .withBody("EFBCDF")));
         server.start();
         // When
-        String code = purchaseApplicationService.getVoucherCode();
+        Purchase purchase = purchaseApplicationService.retrieveVoucherCode("090909");
         // Then
-        assertThat(code).isEqualTo("EFBCDF");
+        assertThat(purchase.getVoucherCode()).isEqualTo("EFBCDF");
         server.stop();
     }
 

@@ -12,6 +12,6 @@ import static lombok.AccessLevel.PRIVATE;
 @FieldDefaults(level = PRIVATE)
 public class Purchase {
     Long id;
-    String name;
-    double price;
+    String phone;
+    String voucherCode;
 }

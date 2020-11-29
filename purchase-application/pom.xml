@@ -17,6 +17,10 @@
             <groupId>org.com</groupId>
             <artifactId>purchase-domain</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.com</groupId>
+            <artifactId>purchase-data-jpa</artifactId>
+        </dependency>
         <!--booties-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -1,5 +1,6 @@
 package org.purchase;
 
+import org.purchase.data.config.DataJpaConfiguration;
 import org.purchase.config.RestConfiguration;
 import org.purchase.data.config.DataRestConfiguration;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Import;
 @Import({
         RestConfiguration.class,
         DataRestConfiguration.class,
+        DataJpaConfiguration.class,
 })
 public class PurchaseApplication {
 

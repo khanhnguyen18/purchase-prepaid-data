@@ -1,8 +1,8 @@
 package org.purchase.data.config;
 
-import org.purchase.data.adapter.PurchaseRepositoryAdapter;
+import org.purchase.data.adapter.VoucherCodeRepositoryAdapter;
 import org.purchase.data.client.CodeGeneratorClient;
-import org.purchase.domain.repository.PurchaseRepository;
+import org.purchase.domain.repository.VoucherCodeRepository;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,8 +13,8 @@ import org.springframework.web.client.RestTemplate;
 public class DataRestConfiguration {
 
     @Bean
-    PurchaseRepository purchaseRepository(CodeGeneratorClient codeGeneratorClient) {
-        return new PurchaseRepositoryAdapter(codeGeneratorClient);
+    VoucherCodeRepository voucherCodeRepository(CodeGeneratorClient codeGeneratorClient) {
+        return new VoucherCodeRepositoryAdapter(codeGeneratorClient);
     }
 
     @Bean

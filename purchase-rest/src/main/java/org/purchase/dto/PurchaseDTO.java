@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class PurchaseDTO {
     Long id;
-    String name;
-    Double price;
+    String phone;
+    String voucherCode;
 }
