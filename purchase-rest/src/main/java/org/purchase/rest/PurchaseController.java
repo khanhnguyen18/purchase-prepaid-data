@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.websocket.server.PathParam;
+import java.util.List;
 
 
 @RestController
@@ -23,8 +24,12 @@ public class PurchaseController {
     PurchaseDTOMapper purchaseDTOMapper;
 
     @GetMapping("/voucher-code")
-
     public PurchaseDTO getVoucherCode(@PathParam("phone") String phone) {
         return purchaseDTOMapper.map(purchaseApplicationService.retrieveVoucherCode(phone));
+    }
+
+    @GetMapping("/getAllVouchers")
+    public List<PurchaseDTO> getAllVouchers(@PathParam("phone") String phone) {
+        return purchaseDTOMapper.mapList(purchaseApplicationService.getAllVouchers(phone));
     }
 }

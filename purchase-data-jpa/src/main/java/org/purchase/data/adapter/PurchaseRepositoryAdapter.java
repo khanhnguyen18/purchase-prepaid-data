@@ -9,6 +9,8 @@ import org.purchase.data.mapper.PurchaseDataMapper;
 import org.purchase.domain.entity.Purchase;
 import org.purchase.domain.repository.PurchaseRepository;
 
+import java.util.List;
+
 @AllArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class PurchaseRepositoryAdapter implements PurchaseRepository {
@@ -20,5 +22,10 @@ public class PurchaseRepositoryAdapter implements PurchaseRepository {
     public Purchase create(Purchase purchase) {
         PurchaseEntity purchaseEntity = purchaseJpaRepository.save(purchaseDataMapper.map(purchase));
         return purchaseDataMapper.map(purchaseEntity);
+    }
+
+    @Override
+    public List<Purchase> getAll(String phone) {
+        return purchaseDataMapper.mapList(purchaseJpaRepository.getByPhone(phone));
     }
 }

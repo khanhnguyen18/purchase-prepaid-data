@@ -5,6 +5,8 @@ import org.purchase.domain.entity.Purchase;
 import org.purchase.domain.repository.PurchaseRepository;
 import org.purchase.domain.repository.VoucherCodeRepository;
 
+import java.util.List;
+
 @AllArgsConstructor
 public class PurchaseApplicationService {
 
@@ -19,6 +21,20 @@ public class PurchaseApplicationService {
                 .voucherCode(voucherCode).build();
 
         return purchaseRepository.create(purchase);
+    }
+
+    public Purchase getAllVoucherCodes(String phoneNumber) {
+        String voucherCode = voucherCodeRepository.getVoucherCode();
+
+        Purchase purchase = Purchase.builder()
+                .phone(phoneNumber)
+                .voucherCode(voucherCode).build();
+
+        return purchaseRepository.create(purchase);
+    }
+
+    public List<Purchase> getAllVouchers(String phoneNumber) {
+        return purchaseRepository.getAll(phoneNumber);
     }
 
 }

@@ -4,6 +4,8 @@ import org.purchase.data.jpa.entity.PurchaseEntity;
 import org.mapstruct.Mapper;
 import org.purchase.domain.entity.Purchase;
 
+import java.util.List;
+
 import static org.mapstruct.NullValueCheckStrategy.ALWAYS;
 import static org.mapstruct.NullValuePropertyMappingStrategy.SET_TO_NULL;
 
@@ -15,4 +17,5 @@ import static org.mapstruct.NullValuePropertyMappingStrategy.SET_TO_NULL;
 public interface PurchaseDataMapper {
     PurchaseEntity map(Purchase purchase);
     Purchase map(PurchaseEntity purchase);
+    List<Purchase> mapList(List<PurchaseEntity> purchase);
 }
