@@ -1,5 +1,6 @@
 package org.purchase.config;
 
+import org.purchase.service.SmsApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 public class SmsRequestFilter extends OncePerRequestFilter {
 
     @Autowired
-    private SmsTokenUtils smsTokenUtils;
+    private SmsApplicationService smsApplicationService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
@@ -28,7 +29,7 @@ public class SmsRequestFilter extends OncePerRequestFilter {
         final String requestTokenHeader = request.getHeader("Authorization");
         if (requestTokenHeader != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             String phone = request.getParameter("phone");
-            if (smsTokenUtils.validateToken(phone, requestTokenHeader)) {
+            if (smsApplicationService.validateToken(phone, requestTokenHeader)) {
                 User userDetails = new User("sms", "sms",
                         new ArrayList<>());
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(

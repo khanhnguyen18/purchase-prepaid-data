@@ -1,10 +1,9 @@
 @startuml
 
 class Purchase {
-    #Name
-    #Price
-    #Brand
-    #Colour
+    #Id
+    #Phone
+    #Voucher
 }
 
 @enduml

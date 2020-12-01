@@ -22,18 +22,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        // We don't need CSRF for this example
         httpSecurity.csrf().disable()
-                // dont authenticate this particular request
                 .authorizeRequests()
-                .antMatchers("/getAllVouchers").authenticated()
-                .anyRequest().permitAll().and().
-                // make sure we use stateless session; session won't be used to
-                // store user's state.
-                        exceptionHandling().authenticationEntryPoint(smsAuthenticationEntryPoint).and().sessionManagement()
+                .antMatchers("/rest/api/v1/purchases/getAllVouchers").authenticated()
+                .antMatchers("/**").permitAll()
+                .and()
+                .exceptionHandling().authenticationEntryPoint(smsAuthenticationEntryPoint).and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-        // Add a filter to validate the tokens with every request
         httpSecurity.addFilterBefore(smsRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }

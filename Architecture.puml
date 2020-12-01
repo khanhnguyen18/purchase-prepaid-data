@@ -14,8 +14,10 @@ package "Application Service" {
   node "purchase-application"
 }
 
-package "Infrastructrue" {
+package "Infrastructure" {
   node "purchase-data-jpa"
+
+  node "purchase-data-rest"
 }
 
 database "H2" {
@@ -25,7 +27,9 @@ database "H2" {
 
 [purchase-bootstrap] --> [purchase-rest]
 [purchase-bootstrap] --> [purchase-data-jpa]
+[purchase-bootstrap] --> [purchase-data-rest]
 
+[purchase-data-rest] --> [purchase-domain]
 [purchase-data-jpa] --> [purchase-domain]
 [purchase-application] --> [purchase-domain]
 
