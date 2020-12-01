@@ -4,14 +4,14 @@
 ![Screenshot](Architecture.png)
 The project was design with hexagonal architecture with Domain Driven Design
 * **Presentation layer**: contain the presentation of application. It maybe a rest, a console, a batch application. In this project, it's a rest service 
-* **Domain layer**: purchase-domain. It will contain all the interface for bussiness logic. This domain we did not use any third party library
+* **Domain layer**: purchase-domain. It will contain all the interface for business logic. This domain we did not use any third party library
 * **Database**: H2 for just demo purpose
 * **Infrastructure layer**: This is layer which use for implement adapters to plug into the hexagonal architecture. It includes all the conrete implementation of jpa, rest...
     1. purchase-data-jpa: include all implement of jpa. it implements the domain repository
     2. purchase-data-rest: implement all classes for calling third-party rest client
 * **Bootstrap**: This is the main part. In this component, it will know all the implementations.
-## Pattern
-* Adapter
+## Patterns
+* Adapter pattern: to build hexagonal architecture  
 
 #API  Documentation
 Swagger use to help user can execute the rest API with documentation
